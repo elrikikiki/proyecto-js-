@@ -14,12 +14,26 @@ while ((nombre === "") || (pais === "")) {
 //FUNCION IVA
 const iva = a => a *1.21;
 
+//FILTER
+
+
+const listaPreciosPrompt = prompt("Ingrese el nombre del celular que está buscando");
+const lista = [
+    {nombre: "Xiaomi Redmi 1", precio: 30000},
+    {nombre: "Xiaomi Redmi 2", precio: 40000},
+    {nombre: "Iphone 9", precio: 75000},
+    {nombre: "Iphone 10", precio: 120000}
+]
+const resultFinder = lista.find(elem => elem.nombre === listaPreciosPrompt);
+
+alert(`El ${resultFinder} está disponible`);
+
+//Pregunta MARCA
 const preguntaMarcaCelular = prompt(`Hola ${nombre}¿Qué marca de celular estás buscando, Xiaomi o Apple?`);
 
 //XIAOMI SECCION
 
 if (preguntaMarcaCelular === "Xiaomi") {
-    const queModelosQueresXiaomi = prompt("¿Qué modelos estás buscando? \nEstos son los modelos que nos quedaron en stock: \nRedmi 1 \nRedmi 2");
     class ModelosDeXiaomi {
         constructor(nombreDelXiaomi, megaPixelesCam, anio, color, precio) {
             this.nombreDelXiaomi = nombreDelXiaomi;
@@ -31,6 +45,7 @@ if (preguntaMarcaCelular === "Xiaomi") {
     }
     const xiaomiRedmi1 = new ModelosDeXiaomi ("Redmi 1", "25 Mgpx", "2019", {colores: "rojo, verde o azul"},30000);
     const xiaomiRedmi2 = new ModelosDeXiaomi ("Redmi 2", "30 Mgpx", "2020", {colores: "azul"}, 40000);
+    const queModelosQueresXiaomi = prompt("¿Qué modelos estás buscando? \nEstos son los modelos que nos quedaron en stock: \nRedmi 1 \nRedmi 2");
     if (queModelosQueresXiaomi === "Redmi 1") {
         alert("Has elegido el " + xiaomiRedmi1.nombreDelXiaomi + "\nCámara: " + xiaomiRedmi1.megaPixelesCam + "\nAño: " + xiaomiRedmi1.anio + "\nColores: " + xiaomiRedmi1["colores"]);
         let deseaComprarlo = prompt("¿Desea comprarlo?");
@@ -57,9 +72,7 @@ if (preguntaMarcaCelular === "Xiaomi") {
         } else if (deseaComprarlo === "No") {
             alert("¡Lo esperamos pronto, hasta luego!")
         }else {
-            while (deseaComprarlo !="Si" || "No") {
-                deseaComprarlo = prompt("¿Desea comprarlo?");
-            }
+            alert("Error");
          }
 
     }else if (queModelosQueresXiaomi === "Redmi 2") {
@@ -87,69 +100,81 @@ if (preguntaMarcaCelular === "Xiaomi") {
         }else if (deseaComprarlo1==="No") {
             alert("¡Lo esperamos pronto, hasta luego!");
         }else{
-            
+            alert("Error.")
         } 
 
  }else {
-    alert("Algo no paso bueno");
+    alert("Algo sucedió de manera indebida");
  }}
 
 //IPHONE SECCION
 
  else if (preguntaMarcaCelular === "Apple")  {
-    let queModelosQueresIphone = prompt("¿Qué modelos estás buscando? \nEstos son los modelos que nos quedaron en stock: \nIphone 10 \nIphone 11");
-    class ModelosDeIphone {
-        constructor(nombreDelIphone, megaPixelesCam, anio, color, precio) {
-            this.nombreDelIphone = nombreDelIphone;
-            this.megaPixelesCam = megaPixelesCam;
-            this.anio = anio;
-            this.color = color;
-            this.precio = precio;
-        } 
-    }
-    const iphone10 = new ModelosDeIphone ("Iphone 10", "33 Mgpx", "2020", {rojo, verde, azul},75000);
-    const iphone11 = new ModelosDeIphone ("Iphone 11", "41 Mgpx", "2021", {azul, rojo, blanco}, 120000);
-    if (queModelosQueresIphone == "Iphone 10") {
-        alert("Has elegido el " + iphone10.nombreDelIphone + "\n Cámara: " + iphone10.megaPixelesCam + "\n Año: " + iphone10.anio + "\n Colores: " + iphone10.color/* VERR */);
-        let cuantosLleva10 = parseInt(prompt("¿Cúantos desea llevar?"));
-        let cantidadQueLleva10 = (a, b) => (a * b);
-        alert (`Has elegido ${cuantosLleva10}.\nTotal a pagar: ${iva (cantidadQueLleva10 (iphone10.precio,cuantosLleva10))} pesos (Incluye el IVA)`);
-        const suma10 = (a,b,c) => a + b + c;
-        let fundaVidrioTempladoIphone = {funda: 1500, vidrioTemplado:700};  
-        const fundaPrompt10 = prompt(`¿Desea agregar a su compra una funda a ${fundaVidrioTempladoIphone.funda} (pesos) + 
-        un vidrio templado a ${fundaVidrioTempladoIphone.vidrioTemplado} (pesos)?`);
-        if (fundaPrompt10 === "Si") {
-            alert(`Perfecto, su total a pagar es de ${suma10 (iva (cantidadQueLleva10 (iphone10.precio,cuantosLleva10)),
-            fundaVidrioTempladoIphone.funda,fundaVidrioTempladoIphone.vidrioTemplado)} pesos \n(Incluye: funda, vidrio templado e IVA)`);
-        }else if (fundaPrompt10 === "No") {
-            alert(`Tu total a pagar es de: ${iva (cantidadQueLleva10 (iphone10.precio,cuantosLleva10))}`);
-            alert ("¡Gracias por su compra, lo esperamos pronto!");
-        }else {
-            alert ("Algo no anduvo bien, vuelve a introducir los datos solicitados");
+    class Iphone {
+        constructor(nombreDelIphone, megaPixelesCam1, anio1, color1, precio1) {
+            this.nombreDelIphone1 = nombreDelIphone;
+            this.megaPixelesCam1 = megaPixelesCam1;
+            this.anio1 = anio1;
+            this.color1 = color1;
+            this.precio1 = precio1;
         }
+    } 
+    const iphone10 = new Iphone ("Iphone 10", "33 Mgpx", "2020", "rojo, verde, azul",75000);
+    const iphone11 = new Iphone ("Iphone 11", "41 Mgpx", "2021", "azul, rojo, blanco", 120000);
+    const queModelosQueresIphone = prompt("¿Qué modelos estás buscando? \nEstos son los modelos que nos quedaron en stock: \nIphone 10 \nIphone 11");
+
+    //IPHONE 10
+    if (queModelosQueresIphone === "Iphone 10") {
+        alert(`Has elegido el ${iphone10.nombreDelIphone} \n Cámara: ${iphone10.megaPixelesCam1} \n Año:${iphone10.anio1} \n Colores:  ${iphone10.color1}`);
+        let deseaComprarlo10 = prompt("¿Desea comprarlo?");
+        if (deseaComprarlo10 ==="Si") {
+            let cuantosLleva10 = parseInt(prompt("¿Cúantos desea llevar?"));
+            let cantidadQueLleva10 = (a, b) => (a * b);
+            alert (`Has elegido ${cuantosLleva10}.\nTotal a pagar: ${iva (cantidadQueLleva10 (iphone10.precio1,cuantosLleva10))} pesos (Incluye el IVA)`);
+            const suma10 = (a,b,c) => a + b + c;
+            let fundaVidrioTempladoIphone = {funda: 1500, vidrioTemplado:700};  
+            const fundaPrompt10 = prompt(`¿Desea agregar a su compra una funda a ${fundaVidrioTempladoIphone.funda} (pesos) + 
+            un vidrio templado a ${fundaVidrioTempladoIphone.vidrioTemplado} (pesos)?`);
+            if (fundaPrompt10 === "Si") {
+                alert(`Perfecto, su total a pagar es de ${suma10 (iva (cantidadQueLleva10 (iphone10.precio1,cuantosLleva10)),
+                fundaVidrioTempladoIphone.funda,fundaVidrioTempladoIphone.vidrioTemplado)} pesos \n(Incluye: funda, vidrio templado e IVA)`);
+            }else if (fundaPrompt10 === "No") {
+                alert(`Tu total a pagar es de: ${iva (cantidadQueLleva10 (iphone10.precio1,cuantosLleva10))}`);
+                alert ("¡Gracias por su compra, lo esperamos pronto!");
+            }else {
+                alert ("Algo no anduvo bien, vuelve a introducir los datos solicitados");
+            }
+        }else if (deseaComprarlo10 ==="No") {
+            alert("Lo esperamos pronto");
+        }else {
+            alert("Algo no anduvo bien");
+        }
+    
+    //IPHONE 11
     }else if (queModelosQueresIphone === "Iphone 11") {
-        alert("Has elegido el " + iphone11.nombreDelIphone + "\n Cámara: " + iphone11.megaPixelesCam + "\n Año: " + iphone11.anio + "\n Colores: " + iphone11.color/* VERR */);
-        let cuantosLleva11 = parseInt (prompt("¿Cúantos desea llevar?"));
+        alert("Has elegido el " + iphone11.nombreDelIphone + "\n Cámara: " + iphone11.megaPixelesCam1 + "\n Año: " + iphone11.anio1 + "\n Colores: " + iphone11.color1);
+        let deseaComprarlo2 = prompt("¿Desea comprarlo?");
+        if (deseaComprarlo2 ==="Si") {
+            let cuantosLleva11 = parseInt (prompt("¿Cúantos desea llevar?"));
         let cantidadQueLleva11 = (a, b) => (a * b);
-        alert (`Has elegido ${cuantosLleva11}.\nTotal a pagar: ${iva (cantidadQueLleva11 (iphone11.precio,cuantosLleva11))} pesos (Incluye el IVA)`);
+        alert (`Has elegido ${cuantosLleva11}.\nTotal a pagar: ${iva (cantidadQueLleva11 (iphone11.precio1,cuantosLleva11))} pesos (Incluye el IVA)`);
         const suma11 = (a,b,c) => a + b + c;
         let fundaVidrioTempladoIphone = {funda: 1500, vidrioTemplado:700 };  
         const fundaPrompt11 = prompt(`¿Desea agregar a su compra una funda a ${fundaVidrioTempladoIphone.funda} (pesos) + 
         un vidrio templado a ${fundaVidrioTempladoIphone.vidrioTemplado} (pesos)?`);
         if (fundaPrompt11 === "Si") {
-            alert(`Perfecto, su total a pagar es de ${suma11 (iva (cantidadQueLleva11 (iphone11.precio,cuantosLleva11)),
+            alert(`Perfecto, su total a pagar es de ${suma11 (iva (cantidadQueLleva11 (iphone11.precio1,cuantosLleva11)),
             fundaVidrioTempladoIphone.funda,fundaVidrioTempladoIphone.vidrioTemplado)} pesos \n(Incluye: funda, vidrio templado e IVA)`);
         }else if (fundaPrompt11 === "No") {
-            alert(`Tu total a pagar es de: ${iva (cantidadQueLleva11 (iphone12.precio,cuantosLleva11))}`);
+            alert(`Tu total a pagar es de: ${iva (cantidadQueLleva11 (iphone11.precio1,cuantosLleva11))}`);
             alert ("¡Gracias por su compra, lo esperamos pronto!");
         }else {
             alert("Algo no salió bien, vuelve a intentarlo");
-        }
+        }}
+        
     }else {
-        alert("que pacho");
-    }
-}
+        alert("Hemos detectado un problema");
+    }}
 else {
-    alert("no nene");
-
-}
+    alert("Algo no anduvo bien");
+    }
