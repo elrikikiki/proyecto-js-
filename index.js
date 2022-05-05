@@ -1,4 +1,4 @@
-
+//PROYECTO CELULARESON
 const nombreYPais = (nombre,pais) => nombre + pais;
 alert("Hola bienvenid@s a CelularesOn, el mejor lugar para comprar tu celular");
 let nombre = prompt("Hola ¿Cúal es tu nombre?");
