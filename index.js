@@ -1,3 +1,52 @@
+/* let titulito = document.getElementById("titulo");
+let accionDelMouse = "keyup";
+titulito.addEventListener (accionDelMouse, () => {alert("has hecho click")})
+let buscador = document.getElementById ("input");
+buscador.addEventListener ("keyup", (e) => {
+    if (e.key === "Enter") {
+        alert(`Has elegido el ${iphone10.nombreDelIphone1} \n Cámara: ${iphone10.megaPixelesCam1} \n Año:${iphone10.anio1} \n Colores:  ${iphone10.color1}`);
+    }
+}) */
+//EVENTOS
+
+let formulario = document.getElementById("saludoDos");
+formulario.addEventListener("submit",(e) => {
+e.preventDefault()
+alert("Hola "+ e.target.children[1].value + " su consulta ha quedado registrada, pronto le enviaremos un mail a "
+ + e.target.children[3].value);
+});
+
+let consulta1 = document.getElementById("consultaArea");
+consulta1.addEventListener("mousedown", () => {
+    alert("El área de consultas es un espacio que te brinda Celulares ON para sacarte todas las dudas que tengas acerca de nuestros productos y servicios.")
+});
+
+let redmi1 = document.getElementById ("redmi1");
+redmi1.addEventListener("click", () => {
+    alert("DISPONIBLE")
+});
+
+let redmi2 = document.getElementById ("redmi2");
+redmi2.addEventListener("click", () => {
+    alert("DISPONIBLE");
+});
+let redmi3 = document.getElementById ("redmi3");
+redmi3.addEventListener("click", () => {
+    alert("NO DISPONIBLE");
+});
+let iphone9Dom = document.getElementById ("iphone9Dom");
+iphone9Dom.addEventListener("click", () => {
+    alert("DISPONIBLE")
+});
+let iphone9Plus = document.getElementById ("iphone9plus");
+iphone9Plus.addEventListener("click", () => {
+    alert("NO DISPONIBLE")
+});
+let iphone10Dom = document.getElementById ("iphone10Dom");
+iphone10Dom.addEventListener("click", () => {
+    alert("DISPONIBLE")
+});
+
 //PROYECTO CELULARESON
 const nombreYPais = (nombre,pais) => nombre + pais;
 alert("Hola bienvenid@s a CelularesOn, el mejor lugar para comprar tu celular");
@@ -256,3 +305,4 @@ else {
     while (preguntaMarcaCelular === "") {
         alert("Algo no anduvo bien");
         preguntaMarcaCelular = prompt(`${nombre} ¿Por cuál marca de celular te has decidido, Xiaomi o Apple?`); }
+
